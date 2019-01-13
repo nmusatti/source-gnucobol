@@ -1,2 +1,8 @@
 ---
 # vars file for source-gnucobol
+gnucobol_base_url: https://sourceforge.net/projects/open-cobol/files/gnu-cobol
+gnucobol_versions:
+  1.1: 1.1
+  2.0: 2.0_rc-2
+  2.2: 2.2
+  3.0: 3.0-rc1

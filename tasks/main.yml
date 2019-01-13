@@ -1,2 +1,50 @@
 ---
 # tasks file for source-gnucobol
+- name: Create the GnuCOBOL installation group
+  group:
+    name: "{{ gnucobol_group }}"
+  become: true
+
+- name: Create the GnuCOBOL installation owner
+  user:
+    name: "{{ gnucobol_user }}"
+    group: "{{ gnucobol_group }}"
+  become: true
+
+- name: Install dependencies
+  yum:
+    name:
+      - gcc
+      - gmp
+      - gmp-devel
+      - libdb
+      - libdb-devel
+      - libtool
+      - make
+      - ncurses
+      - ncurses-devel
+      - ncurses-libs
+      - perl
+      - tar
+      - wget
+    state: present
+  become: true
+
+- name: Create source directory
+  file:
+    group: "{{ gnucobol_group }}"
+    mode: 755
+    owner: "{{ gnucobol_user }}"
+    path: "{{ gnucobol_src_dir }}"
+    state: directory
+  become: true
+
+- name: Download the source archive
+  get_url:
+    dest: "{{ gnucobol_src_dir }}"
+    group: "{{ gnucobol_group }}"
+    owner: "{{ gnucobol_user }}"
+    url: "{{ gnucobol_url }}"
+  become: true
+
+  

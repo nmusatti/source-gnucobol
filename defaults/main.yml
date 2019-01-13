@@ -1,2 +1,8 @@
 ---
 # defaults file for source-gnucobol
+gnucobol_group: gnucobol
+gnucobol_user: gnucobol
+gnucobol_src_dir: /sw/gnucobol
+gnucobol_release: 3.0
+gnucobol_archive: gnucobol-{{ gnucobol_versions[gnucobol_release] }}.tar.gz
+gnucobol_url: "{{ gnucobol_base_url }}/{{ gnucobol_release }}/{{ gnucobol_archive }}"
