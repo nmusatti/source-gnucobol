@@ -33,11 +33,16 @@
 - name: Create source directory
   file:
     group: "{{ gnucobol_group }}"
-    mode: 755
+    mode: 0755
     owner: "{{ gnucobol_user }}"
     path: "{{ gnucobol_src_dir }}"
     state: directory
   become: true
+
+- name: Check the archive isn't already available
+  stat:
+    path: "{{ gnucobol_src_dir }}/{{ gnucobol_archive }}"
+  register: archive_stat_result
 
 - name: Download the source archive
   get_url:
@@ -46,6 +51,7 @@
     owner: "{{ gnucobol_user }}"
     url: "{{ gnucobol_url }}"
   become: true
+  when: not archive_stat_result.stat.exists
 
 - name: Unpack the source archive
   unarchive:
@@ -59,14 +65,14 @@
 - name: Check configure hasn't run
   stat:
     path: "{{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}/config.log"
-  register: stat_result
+  register: configure_stat_result
 
 - name: Run ./configure
   command: ./configure --prefix={{ gnucobol_install_dir }}/gnucobol-{{ gnucobol_release }} chdir={{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}
   become: true
   become_user: "{{ gnucobol_user }}"
   register: configure_result
-  when: not stat_result.stat.exists
+  when: not configure_stat_result.stat.exists
 
 - name: Run make
   make:
