@@ -47,4 +47,49 @@
     url: "{{ gnucobol_url }}"
   become: true
 
-  
+- name: Unpack the source archive
+  unarchive:
+    src: "{{ gnucobol_src_dir }}/{{ gnucobol_archive }}"
+    dest: "{{ gnucobol_src_dir }}"
+    group: "{{ gnucobol_group }}"
+    owner: "{{ gnucobol_user }}"
+    remote_src: true
+  become: true
+
+- name: Check configure hasn't run
+  stat:
+    path: "{{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}/config.log"
+  register: stat_result
+
+- name: Run ./configure
+  command: ./configure --prefix={{ gnucobol_install_dir }}/gnucobol-{{ gnucobol_release }} chdir={{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}
+  become: true
+  become_user: "{{ gnucobol_user }}"
+  register: configure_result
+  when: not stat_result.stat.exists
+
+- name: Run make
+  make:
+    chdir: "{{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}"
+  become: true
+  become_user: "{{ gnucobol_user }}"
+  register: make_result
+  when: configure_result is not skipped
+
+- name: Run make install
+  make:
+    chdir: "{{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}"
+    target: install
+  become: true
+  register: install_result
+  when: make_result is not skipped
+
+- name: Set permissions
+  file:
+    path: "{{ gnucobol_install_dir }}/gnucobol-{{ gnucobol_release }}"
+    owner: "{{ gnucobol_user }}"
+    group: "{{ gnucobol_group }}"
+    recurse: true
+  become: true
+  when: install_result is not skipped
+
