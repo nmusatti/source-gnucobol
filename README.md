@@ -1,6 +1,8 @@
 Ansible role: source-gnucobol
 =============================
 
+[![Build Status](https://travis-ci.org/nmusatti/source-gnucobol.svg?branch=master)](https://travis-ci.org/nmusatti/source-gnucobol)
+
 An Ansible role to download and install Gnu COBOL from source. Currently only CentOS 7 is supported.
 
 Requirements
