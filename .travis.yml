@@ -13,4 +13,3 @@ install:
   - pip install docker-py
 script:
   - molecule test
-
