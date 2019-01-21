@@ -51,6 +51,8 @@
     owner: "{{ gnucobol_user }}"
     url: "{{ gnucobol_url }}"
   become: true
+  retries: 3
+  delay: 3
   when: not archive_stat_result.stat.exists
 
 - name: Unpack the source archive
