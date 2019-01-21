@@ -5,6 +5,8 @@ Ansible role: source-gnucobol
 
 An Ansible role to download and install Gnu COBOL from source. Currently only CentOS 7 is supported.
 
+Inspired by the [ansible-role-gnu-cobol](https://github.com/ChristopherDavenport/ansible-role-gnu-cobol) role.
+
 Requirements
 ------------
 
