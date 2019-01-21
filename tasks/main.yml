@@ -64,11 +64,15 @@
 
 - name: Check configure hasn't run
   stat:
-    path: "{{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}/config.log"
+    path: "{{ gnucobol_src_dir }}/gnucobol-{{
+    gnucobol_versions[gnucobol_release] }}/config.log"
   register: configure_stat_result
 
 - name: Run ./configure
-  command: ./configure --prefix={{ gnucobol_install_dir }}/gnucobol-{{ gnucobol_release }} chdir={{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}
+  command: >
+    ./configure --prefix={{ gnucobol_install_dir }}/gnucobol-{{
+    gnucobol_release }} chdir={{ gnucobol_src_dir }}/gnucobol-{{
+    gnucobol_versions[gnucobol_release] }}
   become: true
   become_user: "{{ gnucobol_user }}"
   register: configure_result
@@ -76,7 +80,8 @@
 
 - name: Run make
   make:
-    chdir: "{{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}"
+    chdir: "{{ gnucobol_src_dir }}/gnucobol-{{
+    gnucobol_versions[gnucobol_release] }}"
   become: true
   become_user: "{{ gnucobol_user }}"
   register: make_result
@@ -84,7 +89,8 @@
 
 - name: Run make install
   make:
-    chdir: "{{ gnucobol_src_dir }}/gnucobol-{{ gnucobol_versions[gnucobol_release] }}"
+    chdir: "{{ gnucobol_src_dir }}/gnucobol-{{
+    gnucobol_versions[gnucobol_release] }}"
     target: install
   become: true
   register: install_result
