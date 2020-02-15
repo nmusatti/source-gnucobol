@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: source-gnucobol
+  vars:
+    gnucobol_version: 2.2
+  tasks:
+    - include_role:
+        name: source-gnucobol
+      vars:
+        gnucobol_version: 3.0
+        gnucobol_force: true

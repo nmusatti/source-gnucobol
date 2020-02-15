@@ -3,7 +3,8 @@ Ansible role: source-gnucobol
 
 [![Build Status](https://travis-ci.org/nmusatti/source-gnucobol.svg?branch=master)](https://travis-ci.org/nmusatti/source-gnucobol)
 
-An Ansible role to download and install Gnu COBOL from source. Currently only CentOS 7 is supported.
+An Ansible role to download and install Gnu COBOL from source. Currently only Red Hat distributions are supported,
+i.e. CentOS 7, CentOS 8 and Fedora.
 
 Inspired by the [ansible-role-gnu-cobol](https://github.com/ChristopherDavenport/ansible-role-gnu-cobol) role.
 
@@ -37,6 +38,11 @@ The installation group.
     gnucobol_src_dir: /sw/gnucobol
 
 The directory where the source archive is downloaded, extracted and built.
+
+    gnucobol_force: false
+
+When `true` installation is performed even if a bug fix release of the same minor version was already installed.
+Useful to repeat installations after something went wrong or to perform upgrades.
 
 Dependencies
 ------------
