@@ -14,6 +14,7 @@ def test_hosts_file(host):
     assert f.user == 'root'
     assert f.group == 'root'
 
+
 def test_cobc(host):
     f = host.file('/opt/gnucobol-3.0/bin/cobc')
     assert f.exists

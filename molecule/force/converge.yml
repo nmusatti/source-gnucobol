@@ -3,11 +3,11 @@
   hosts: all
   roles:
     - role: source-gnucobol
-  vars:
-    gnucobol_version: 2.2
+      vars:
+        gnucobol_release: 2.2
   tasks:
     - include_role:
         name: source-gnucobol
       vars:
-        gnucobol_version: 3.0
+        gnucobol_release: 3.0
         gnucobol_force: true
