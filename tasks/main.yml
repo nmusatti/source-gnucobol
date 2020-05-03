@@ -66,10 +66,10 @@
     group: "{{ gnucobol_group }}"
     owner: "{{ gnucobol_user }}"
     url: "{{ gnucobol_url }}"
-    timeout: 20
+    timeout: 30
   become: true
-  retries: 5
-  delay: 3
+  retries: 10
+  delay: 5
   when: not archive_stat_result.stat.exists
 
 - name: Unpack the source archive
