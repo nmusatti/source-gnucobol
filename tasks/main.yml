@@ -78,6 +78,7 @@
     dest: "{{ gnucobol_src_dir }}"
     group: "{{ gnucobol_group }}"
     owner: "{{ gnucobol_user }}"
+    mode: 0755
     remote_src: true
   become: true
 
