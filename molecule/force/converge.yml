@@ -2,11 +2,12 @@
 - name: Converge
   hosts: all
   roles:
-    - role: source-gnucobol
+    - role: nmusatti.source_gnucobol
       vars:
         gnucobol_release: 2.2
   tasks:
-    - include_role:
+    - name: Include role
+      include_role:
         name: source-gnucobol
       vars:
         gnucobol_release: 3.0

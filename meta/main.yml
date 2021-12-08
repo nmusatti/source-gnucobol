@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  role_name: source_gnucobol
+  namespace: nmusatti
   author: Nicola Musatti
   description: Gnu COBOL source installation
   license: license (GPLv3)
