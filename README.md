@@ -1,7 +1,7 @@
 Ansible role: source-gnucobol
 =============================
 
-![test](https://github.com/nmusatti/source-cobol/actions/workflows/test.yml/badge.svg)
+![test](https://github.com/nmusatti/source-gnucobol/actions/workflows/test.yml/badge.svg)
 
 An Ansible role to download and install Gnu COBOL from source. Currently only Red Hat distributions are supported,
 i.e. CentOS 7, CentOS 8 and Fedora.
