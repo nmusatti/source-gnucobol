@@ -11,7 +11,7 @@
     group: "{{ gnucobol_group }}"
   become: true
 
-- name: Install dependencies
+- name: Install dependencies (RedHat distros)
   yum:
     name:
       - gcc
@@ -31,6 +31,25 @@
   become: true
   retries: 3
   delay: 3
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Install dependencies (Ubuntu)
+  apt:
+    name:
+      - gcc
+      - libgmp-dev
+      - libdb-dev
+      - libtool
+      - make
+      - libncurses-dev
+      - perl
+      - tar
+      - wget
+    state: present
+  become: true
+  retries: 3
+  delay: 3
+  when: ansible_facts['distribution'] == "Ubuntu"
 
 - name: Delete source directory
   file:

@@ -3,8 +3,10 @@ Ansible role: source-gnucobol
 
 ![test](https://github.com/nmusatti/source-gnucobol/actions/workflows/test.yml/badge.svg)
 
-An Ansible role to download and install Gnu COBOL from source. Currently only Red Hat distributions are supported,
-i.e. CentOS 7, CentOS 8 and Fedora.
+An Ansible role to download and install [GnuCOBOL](https://sourceforge.net/projects/gnucobol/)
+from source. Currently supported distributions are the Red Hat ones and their
+derivatives, such as CentOS 7, Rocky Linux 8 and Fedora, and the latest Ubuntu
+LTS, 20.04.
 
 Inspired by the [ansible-role-gnu-cobol](https://github.com/ChristopherDavenport/ansible-role-gnu-cobol) role.
 
@@ -22,9 +24,9 @@ The variables that control the role behaviour are listed below with their respec
 
 The base directory of the installation
 
-    gnucobol_release: 3.0
+    gnucobol_release: 3.1
 
-The Gnu COBOL release to install. Currently valid values are: 1.1, 2.0, 2.2 and 3.0.
+The Gnu COBOL release to install. Currently valid values are: 1.1, 2.0, 2.2, 3.0 and 3.1.
 
     gnucobol_user: gnucobol
 
@@ -41,8 +43,9 @@ The directory where the source archive is downloaded, extracted and built.
 
     gnucobol_force: false
 
-When `true` installation is performed even if a bug fix release of the same minor version was already installed.
-Useful to repeat installations after something went wrong or to perform upgrades.
+When `true` installation is performed even if a bug fix release of the same
+minor version was already installed. Useful to repeat installations after
+something went wrong or to perform upgrades.
 
 Dependencies
 ------------
@@ -56,7 +59,7 @@ Example Playbook
       roles:
          - role: nmusatti.source-gnucobol
            vars:
-             gnucobol_release: 2.2
+             gnucobol_release: 3.1
 
 License
 -------

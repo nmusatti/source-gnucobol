@@ -15,10 +15,10 @@ def test_hosts_file(host):
 
 
 def test_cobc(host):
-    f = host.file('/opt/gnucobol-3.0/bin/cobc')
+    f = host.file('/opt/gnucobol-3.1/bin/cobc')
     assert f.exists
     assert f.user == 'gnucobol'
     assert f.group == 'gnucobol'
 
-    host.check_output('/opt/gnucobol-3.0/bin/cobc --version').find(
-        '3.0-rc1.0') > -1
+    assert '3.1.2' in host.check_output(
+        '/opt/gnucobol-3.1/bin/cobc --version')
