@@ -119,7 +119,7 @@
   when: not configure_stat_result.stat.exists
 
 - name: Run make
-  ansible.builtin.make:
+  community.general.system.make:
     chdir: "{{ gnucobol_src_dir }}/gnucobol-{{
     gnucobol_versions[gnucobol_release] }}"
   become: true
@@ -135,7 +135,7 @@
   when: gnucobol_force and make_result is not skipped
 
 - name: Run make install
-  ansible.builtin.make:
+  community.general.system.make:
     chdir: "{{ gnucobol_src_dir }}/gnucobol-{{
     gnucobol_versions[gnucobol_release] }}"
     target: install
