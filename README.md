@@ -1,4 +1,4 @@
-Ansible role: source-gnucobol
+Ansible role: source_gnucobol
 =============================
 
 ![test](https://github.com/nmusatti/source-gnucobol/actions/workflows/test.yml/badge.svg)
@@ -58,7 +58,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - role: nmusatti.source-gnucobol
+         - role: nmusatti.source_gnucobol
            vars:
              gnucobol_release: 3.1
 
