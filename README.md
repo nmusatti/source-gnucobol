@@ -7,7 +7,7 @@ An Ansible role to download and install [GnuCOBOL](https://sourceforge.net/proje
 from source. Supported distributions are the currently maintained releases of
 the Red Hat family and derivatives, and Ubuntu. At this time tests are run on
 Rocky Linux 9, Rocky Linux 8, CentOS Stream 9, CentOS Stream 8, CentOS 7,
-Fedora 36, Fedora 35, Ubuntu 22.04, Ubuntu 20.04 and Ubuntu 18.04.
+Fedora 37, Fedora 36, Fedora 35, Ubuntu 22.04, Ubuntu 20.04 and Ubuntu 18.04.
 
 Inspired by the [ansible-role-gnu-cobol](https://github.com/ChristopherDavenport/ansible-role-gnu-cobol) role.
 
