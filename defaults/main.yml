@@ -2,5 +2,5 @@
 gnucobol_group: gnucobol
 gnucobol_user: gnucobol
 gnucobol_src_dir: /sw/gnucobol
-gnucobol_release: 3.1
+gnucobol_release: 3.2
 gnucobol_install_dir: /opt

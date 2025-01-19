@@ -11,6 +11,20 @@
     group: "{{ gnucobol_group }}"
   become: true
 
+- name: "Install GNUpg (EL 10)"
+  ansible.builtin.dnf:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - gnupg2
+  become: true
+  when: ansible_facts['os_family'] == "RedHat" and ansible_facts['distribution_major_version'] == '10'
+
+- name: Enable the EPEL repository
+  ansible.builtin.include_role:
+    name: geerlingguy.repo-epel
+  when: ansible_facts['os_family'] == "RedHat" and ansible_facts['distribution_major_version'] == '10'
+
 - name: Install dependencies (RedHat distros)
   ansible.builtin.yum:
     name:
@@ -119,7 +133,7 @@
   when: not configure_stat_result.stat.exists
 
 - name: Run make
-  community.general.system.make:
+  community.general.make:
     chdir: "{{ gnucobol_src_dir }}/gnucobol-{{
     gnucobol_versions[gnucobol_release] }}"
   become: true
@@ -135,7 +149,7 @@
   when: gnucobol_force and make_result is not skipped
 
 - name: Run make install
-  community.general.system.make:
+  community.general.make:
     chdir: "{{ gnucobol_src_dir }}/gnucobol-{{
     gnucobol_versions[gnucobol_release] }}"
     target: install

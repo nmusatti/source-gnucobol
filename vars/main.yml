@@ -6,6 +6,7 @@ gnucobol_versions:
   2.2: 2.2
   3.0: 3.0-rc1
   3.1: 3.1.2
+  3.2: 3.2
 gnucobol_archive: gnucobol-{{ gnucobol_versions[gnucobol_release] }}.tar.gz
 gnucobol_url: "{{ gnucobol_base_url }}/{{ gnucobol_release }}/{{ gnucobol_archive }}"
 gnucobol_force: false
