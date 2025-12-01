@@ -5,10 +5,10 @@ Ansible role: source_gnucobol
 
 An Ansible role to download and install [GnuCOBOL](https://sourceforge.net/projects/gnucobol/)
 from source. Supported distributions are the currently maintained releases of the Red Hat family and
-derivatives, and Ubuntu LTS. At this time tests are run on Rocky Linux 9, CentOS Stream 10, 
-CentOS Stream 9, Fedora 41, Fedora 40, Ubuntu 24.04 and Ubuntu 22.04.
+derivatives, and Ubuntu LTS. At this time tests are run on Rocky Linux 10,  Rocky Linux 9,
+CentOS Stream 10, CentOS Stream 9, Fedora 41, Ubuntu 24.04 and Ubuntu 22.04.
 
-Note that Fedora 42 is excluded from testing because building the compiler fails on that platform.
+Note that Fedora 43 and 42 is excluded from testing because building the compiler fails on those platforms.
 
 Inspired by the [ansible-role-gnu-cobol](https://github.com/ChristopherDavenport/ansible-role-gnu-cobol) role.
 
